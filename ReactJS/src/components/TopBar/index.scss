@@ -1,0 +1,12 @@
+.top-bar-menu {
+    width: 100vw;
+    height: 50px;
+
+    .logout-menu {
+        margin-left: auto;
+
+        &::after {
+            border-bottom: 0px !important;
+        }
+    }
+}

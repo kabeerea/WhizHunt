@@ -1,0 +1,47 @@
+.login-container {
+    height: 100vh;
+
+    .left-section {
+        background: url("../../../assets/background-images/login-bg.png") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .right-section {
+        padding: 0px 24px;
+        margin-top: 100px;
+
+        .login-icon-container {
+            background: #1777ff;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+
+            .login-icon {
+                display: block;
+                margin: auto;
+                color: #fff
+            }
+        }
+
+
+        .login-title {
+            margin: 4px 0px 16px 0px;
+            text-align: center;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-weight: 400;
+            font-size: 1.5rem;
+            line-height: 1.334;
+            letter-spacing: 0em;
+        }
+
+        .login-form {
+            width: 100%;
+        }
+    }
+}
