@@ -36,7 +36,7 @@ const EditUser = forwardRef<ModalRefs, ModalProps>(({
 
   useEffect(() => {
     form.resetFields()
-  }, [initialValues])
+  }, [form, initialValues])
 
   const showModal: () => void = () => {
     setIsModalOpen(true)
