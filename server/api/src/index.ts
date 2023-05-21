@@ -1,4 +1,4 @@
-import express, { Application, Response } from 'express';
+import express, { Application } from 'express';
 import dotenv from 'dotenv'
 import authRoute from './routes/auth.route';
 import testRoute from './routes/test.route';
