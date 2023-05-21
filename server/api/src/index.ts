@@ -7,7 +7,7 @@ import userRoute from './routes/user.route';
 import db from './config/mogodb.config';
 import bodyParser from 'body-parser';
 
-dotenv.config()
+dotenv.config({ path: `./.env.${process.env.NODE_ENV}` })
 db.connect()
 
 const router = express.Router();
