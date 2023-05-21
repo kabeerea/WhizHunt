@@ -14,7 +14,7 @@ export async function authenticateUser(username: string, password: string) {
                 username: authUser.username,
                 role: authUser.role
             }, process.env.TOKEN_SECRET);
-            return token
+            return `Bearer ${token}`
         }
     }
     return null

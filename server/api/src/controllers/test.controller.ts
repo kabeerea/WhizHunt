@@ -6,8 +6,8 @@ import {
     getAllTests,
     deleteTest
 } from "../services/test.service";
-import { formatSuccessResponse, formatErrorResponse } from "../helper/utility";
-import { errors } from "../helper/constants";
+import { formatSuccessResponse, formatErrorResponse } from "../helpers/utility";
+import { errors } from "../helpers/constants";
 import { addUsers } from "../services/user.service";
 
 export async function create(req: Request, res: Response) {

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { authenticateUser, registerUser, verifyUsername } from "../services/auth.service";
-import { formatSuccessResponse, formatErrorResponse } from "../helper/utility";
-import { errors } from "../helper/constants";
+import { formatSuccessResponse, formatErrorResponse } from "../helpers/utility";
+import { errors } from "../helpers/constants";
 
 export async function login(req: Request, res: Response) {
     try {

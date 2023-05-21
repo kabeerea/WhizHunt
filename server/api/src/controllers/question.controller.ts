@@ -6,8 +6,8 @@ import {
     getAllQuestions,
     deleteQuestion
 } from "../services/question.service";
-import { formatSuccessResponse, formatErrorResponse } from "../helper/utility";
-import { errors } from "../helper/constants";
+import { formatSuccessResponse, formatErrorResponse } from "../helpers/utility";
+import { errors } from "../helpers/constants";
 
 export async function create(req: Request, res: Response) {
     try {

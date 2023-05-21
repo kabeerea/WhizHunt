@@ -1,15 +1,6 @@
-import { Schema, model, Types } from "mongoose";
+import { Schema, model } from "mongoose";
+import { IUser } from "../global/types";
 
-export interface IUser {
-    id?: string
-    username?: string
-    test?: Types.ObjectId
-    name?: string
-    phone?: string
-    email?: string
-    password?: string
-    role?: 0 | 1
-}
 
 const userSchema = new Schema(
     {

@@ -1,6 +1,7 @@
 import { Types } from 'mongoose';
-import { UserRoles } from '../helper/constants';
-import User, { IUser } from '../models/user.model'
+import { IUser } from '../global/types';
+import { UserRoles } from '../helpers/constants';
+import User from '../models/user.model'
 
 export async function addUsers(testName: string, testId: string, strength: number) {
     try {

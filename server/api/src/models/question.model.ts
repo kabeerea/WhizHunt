@@ -1,11 +1,6 @@
-import { Schema, model, Types } from "mongoose";
+import { Schema, model } from "mongoose";
+import { IQuestion } from "../global/types";
 
-export interface IQuestion {
-  id: string
-  question: string
-  options: Array<String>
-  answerIndex: number
-}
 
 const questionSchema = new Schema(
   {

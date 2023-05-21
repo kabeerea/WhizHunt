@@ -1,6 +1,6 @@
 import User from '../models/user.model';
 import db from '../config/mogodb.config';
-import { UserRoles } from '../helper/constants';
+import { UserRoles } from '../helpers/constants';
 import bcrypt from 'bcryptjs';
 
 db.connect().then(async () => {

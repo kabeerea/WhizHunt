@@ -1,13 +1,5 @@
-import { Schema, model, Types } from "mongoose";
-
-export interface ITest {
-  id: string
-  name: string
-  strength: number
-  startTime: Date
-  endTime: Date
-  questions: Array<Types.ObjectId>
-}
+import { Schema, model } from "mongoose";
+import { ITest } from "../global/types";
 
 const testSchema = new Schema(
   {

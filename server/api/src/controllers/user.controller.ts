@@ -5,8 +5,8 @@ import {
     getAllUsers,
     deleteUser
 } from "../services/user.service";
-import { formatSuccessResponse, formatErrorResponse } from "../helper/utility";
-import { errors } from "../helper/constants";
+import { formatSuccessResponse, formatErrorResponse } from "../helpers/utility";
+import { errors } from "../helpers/constants";
 
 export async function update(req: Request, res: Response) {
     try {
