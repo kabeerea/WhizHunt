@@ -20,7 +20,7 @@ export async function authenticateUser(username: string, password: string) {
     return null
 }
 
-export async function createUser(user: IUser) {
+export async function registerUser(user: IUser) {
     try {
         const { id, name, email, phone, password } = user
         const hash = bcrypt.hashSync(password, process.env.HASH_SALT);
@@ -31,6 +31,21 @@ export async function createUser(user: IUser) {
             phone,
             password: hash
         })
+    } catch (error) {
+        throw error
+    }
+}
+
+export async function verifyUsername(username: string) {
+    try {
+        const authUser = await getUserByUsername(username)
+        if (authUser) {
+            if (authUser.password) {
+                return { isExist: true, isRegistrationPending: false }
+            }
+            return { isExist: true, isRegistrationPending: true }
+        }
+        return { isExist: false }
     } catch (error) {
         throw error
     }
