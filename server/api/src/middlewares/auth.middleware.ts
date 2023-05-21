@@ -1,6 +1,7 @@
 import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken'
-import { IGetUserAuthInfoRequest, TokenPayload, UserRoles } from '../global/types';
+import { IGetUserAuthInfoRequest, TokenPayload } from '../global/types';
+import { userRoles } from '../helpers/constants';
 
 export const authenticateJWT = (
     req: IGetUserAuthInfoRequest,
@@ -27,7 +28,7 @@ export const authenticateAdmin = (
     res: Response,
     next: NextFunction
 ) => {
-    if (req.user?.role === UserRoles.ADMIN) {
+    if (req.user?.role === userRoles.admin) {
         return next();
     }
     return res.sendStatus(403);

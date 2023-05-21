@@ -17,7 +17,6 @@ export async function create(req: Request, res: Response) {
         await addUsers(test.name, test.id, test.strength)
         return res.status(200).send(formatSuccessResponse({ id: test._id }))
     } catch (error) {
-        console.log(error)
         return res.status(500).send(formatErrorResponse(errors.serverError))
     }
 }

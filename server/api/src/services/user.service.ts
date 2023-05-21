@@ -1,5 +1,6 @@
 import { Types } from 'mongoose';
-import { IUser, UserRoles } from '../global/types';
+import { IUser } from '../global/types';
+import { userRoles } from '../helpers/constants';
 import User from '../models/user.model'
 
 export async function addUsers(testName: string, testId: string, strength: number) {
@@ -7,7 +8,7 @@ export async function addUsers(testName: string, testId: string, strength: numbe
         const users = Array(strength).fill(0).map((_, index) => ({
             username: `${testName.replace(/\s/g, '').toLowerCase()}-${index + 1}`,
             test: new Types.ObjectId(testId),
-            role: UserRoles.USER
+            role: userRoles.admin
         })) as IUser[]
         return User.create(users);
     } catch (error) {

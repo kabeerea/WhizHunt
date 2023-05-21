@@ -1,7 +1,7 @@
 import User from '../models/user.model';
 import db from '../config/mogodb.config';
 import bcrypt from 'bcryptjs';
-import { UserRoles } from '../global/types';
+import { userRoles } from '../helpers/constants';
 
 db.connect().then(async () => {
     const hash = bcrypt.hashSync("admin", process.env.HASH_SALT);
@@ -9,7 +9,7 @@ db.connect().then(async () => {
         name: 'Admin',
         username: 'admin',
         password: hash,
-        role: UserRoles.ADMIN
+        role: userRoles.admin
     })
     user.save().then(
         () => console.log("Seeding completed succesfully")
