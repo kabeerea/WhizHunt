@@ -6,7 +6,6 @@ import questionRoute from './routes/question.route';
 import userRoute from './routes/user.route';
 import db from './config/mogodb.config';
 import bodyParser from 'body-parser';
-import logger from './config/logger.config';
 
 dotenv.config({ path: `./.env.${process.env.NODE_ENV}` })
 db.connect()
