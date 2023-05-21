@@ -8,7 +8,7 @@ type responseError = {
 export function formatSuccessResponse(data: any) {
     return {
         success: true,
-        message: "Success",
+        message: "",
         error_code: "",
         data
     }
