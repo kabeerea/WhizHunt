@@ -1,22 +1,28 @@
 import mongoose from 'mongoose'
 
-function connect() {
-    const connectionString = 'mongodb://localhost:27017/whizhunt'
+const database = mongoose.connection
 
-    mongoose.connect(connectionString);
-    const database = mongoose.connection
+database.on('error', (error) => {
+    console.log(error)
+})
 
-    database.on('error', (error) => {
-        console.log(error)
-    })
+database.once('connected', () => {
+    console.log('Database Connected');
+})
 
-    database.once('connected', () => {
-        console.log('Database Connected');
-    })
+database.once('disconnected', () => {
+    console.log('Database Disconnected')
+})
+
+async function connect() {
+    await mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING);
 }
 
-export const db = mongoose.connection
+function disconnect() {
+    mongoose.connection.close()
+}
 
 export default {
-    connect
+    connect,
+    disconnect
 }

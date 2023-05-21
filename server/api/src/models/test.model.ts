@@ -3,10 +3,10 @@ import { Schema, model, Types } from "mongoose";
 export interface ITest {
   id: string
   name: string
-  strength: Number
+  strength: number
   startTime: Date
   endTime: Date
-  question: Array<Types.ObjectId>
+  questions: Array<Types.ObjectId>
 }
 
 const testSchema = new Schema(

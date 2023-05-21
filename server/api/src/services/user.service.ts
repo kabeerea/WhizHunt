@@ -1,17 +1,55 @@
-import { rejects } from 'assert'
-import { Document } from 'mongoose'
-import { resolve } from 'path'
+import { Types } from 'mongoose';
+import { UserRoles } from '../helper/constants';
 import User, { IUser } from '../models/user.model'
 
-export async function addUser(user: IUser) {
+export async function addUsers(testName: string, testId: string, strength: number) {
     try {
-        const userDoc = new User({
-            name: user.name,
-            username: user.username,
-            password: user.password,
-            role: user.role,
-        })
-        return userDoc.save()
+        const users = Array(strength).fill(0).map((_, index) => ({
+            username: `${testName.replace(/\s/g, '').toLowerCase()}-${index + 1}`,
+            test: new Types.ObjectId(testId),
+            role: UserRoles.USER
+        })) as IUser[]
+        return User.create(users);
+    } catch (error) {
+        throw error
+    }
+}
+
+export async function updateUser(id: string, user: IUser) {
+    try {
+        return User.findByIdAndUpdate({ id }, { ...user })
+    } catch (error) {
+        throw error
+    }
+}
+
+export async function getAllUsers() {
+    try {
+        return User.find().populate('test')
+    } catch (error) {
+        throw error
+    }
+}
+
+export async function getUserById(id: string) {
+    try {
+        return User.findById(id).populate('test')
+    } catch (error) {
+        throw error
+    }
+}
+
+export async function getUserByUsername(username: string) {
+    try {
+        return User.findOne({ username })
+    } catch (error) {
+        throw error
+    }
+}
+
+export async function deleteUser(id: string) {
+    try {
+        return User.findByIdAndDelete(id)
     } catch (error) {
         throw error
     }

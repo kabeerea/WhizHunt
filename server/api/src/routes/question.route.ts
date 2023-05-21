@@ -1,11 +1,11 @@
 import express from 'express'
+import { create, get, getAll, update, deleteById } from '../controllers/question.controller'
+const router = express.Router();
 
-const router = express.Router(); 
-
-router.get('/', (req, res) => { res.send('Get All') });
-router.get('/:id', (req, res) => { res.send('Get One') });
-router.post('/', (req, res) => { res.send('Create One') });
-router.put('/:id', (req, res) => { res.send('Update One') });
-router.delete('/:id', (req, res) => { res.send('Delete One') });
+router.get('/', getAll);
+router.get('/:id', get);
+router.post('/', create);
+router.put('/:id', update);
+router.delete('/:id', deleteById);
 
 export default router

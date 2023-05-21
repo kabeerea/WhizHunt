@@ -1,14 +1,14 @@
 import { Schema, model, Types } from "mongoose";
 
 export interface IUser {
-    id: string
-    username: string
+    id?: string
+    username?: string
     test?: Types.ObjectId
-    name: string
+    name?: string
     phone?: string
     email?: string
-    password: string
-    role: 0 | 1
+    password?: string
+    role?: 0 | 1
 }
 
 const userSchema = new Schema(
@@ -21,7 +21,8 @@ const userSchema = new Schema(
         username: {
             type: String,
             lowercase: true,
-            required: true
+            required: true,
+            unique: true
         },
         test: {
             type: Schema.Types.ObjectId,
@@ -29,7 +30,6 @@ const userSchema = new Schema(
         },
         name: {
             type: String,
-            required: true,
         },
         phone: {
             type: String
@@ -40,7 +40,6 @@ const userSchema = new Schema(
         },
         password: {
             type: String,
-            required: true
         },
         role: {
             type: Number,

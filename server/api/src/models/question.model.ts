@@ -18,22 +18,15 @@ const questionSchema = new Schema(
       type: String,
       required: true
     },
-    options: {
-      type: [{
-        type: [String],
-        validate: {
-          validator: function (value: Array<String>) {
-            return value.length <= 2 && value.length >= 4;
-          },
-          message: 'Number of options must range from 2 to 4'
-        }
-      }],
-    },
+    options: [{
+      type: String,
+      required: true
+    }],
     answerIndex: {
       type: Number,
       validate: {
-        validator: function (value: Number) {
-          return value >= 3;
+        validator: function (value: number) {
+          return value = 3;
         },
         message: 'Option index must range from 0 to 3'
       }
