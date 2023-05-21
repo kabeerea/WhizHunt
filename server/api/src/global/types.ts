@@ -43,3 +43,8 @@ export type responseError = {
     error_code: string,
     message: string
 }
+
+export enum UserRoles  {
+    ADMIN = 0,
+    USER = 1
+}

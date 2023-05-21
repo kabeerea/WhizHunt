@@ -8,9 +8,3 @@ export const errors = {
         message: 'Please enter a valid username or password' 
     }
 }
-
-
-export enum UserRoles  {
-    ADMIN = 0,
-    USER = 1
-}

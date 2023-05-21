@@ -1,7 +1,7 @@
 import User from '../models/user.model';
 import db from '../config/mogodb.config';
-import { UserRoles } from '../helpers/constants';
 import bcrypt from 'bcryptjs';
+import { UserRoles } from '../global/types';
 
 db.connect().then(async () => {
     const hash = bcrypt.hashSync("admin", process.env.HASH_SALT);

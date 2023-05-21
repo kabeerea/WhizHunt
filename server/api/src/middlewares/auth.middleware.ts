@@ -1,7 +1,6 @@
 import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken'
-import { UserRoles } from '../helpers/constants';
-import { IGetUserAuthInfoRequest, TokenPayload } from '../global/types';
+import { IGetUserAuthInfoRequest, TokenPayload, UserRoles } from '../global/types';
 
 export const authenticateJWT = (
     req: IGetUserAuthInfoRequest,
