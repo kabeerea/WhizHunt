@@ -3,8 +3,6 @@ import { authenticateAdmin, authenticateJWT } from '../middlewares/auth.middlewa
 import { getAll, get, create, update, deleteById } from '../controllers/test.controller';
 
 const router = express.Router(); 
-router.use(authenticateJWT)
-router.use(authenticateAdmin)
 router.get('/', getAll);
 router.get('/:id', get);
 router.post('/', create);
