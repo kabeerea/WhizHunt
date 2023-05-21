@@ -28,7 +28,7 @@ export const authenticateAdmin = (
     res: Response,
     next: NextFunction
 ) => {
-    if (req.user?.role !== UserRoles.ADMIN) {
+    if (req.user?.role === UserRoles.ADMIN) {
         return next();
     }
     return res.sendStatus(403);
