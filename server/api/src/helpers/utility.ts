@@ -1,7 +1,4 @@
-type responseError = {
-    error_code: string,
-    message: string
-}
+import { responseError } from "../global/types"
 
 export function formatSuccessResponse(data: any) {
     return {

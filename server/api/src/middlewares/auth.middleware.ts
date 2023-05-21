@@ -1,8 +1,7 @@
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken'
+import { UserRoles } from '../helpers/constants';
 import { IGetUserAuthInfoRequest, TokenPayload } from '../global/types';
-
-
 
 export const authenticateJWT = (
     req: IGetUserAuthInfoRequest,
@@ -17,9 +16,20 @@ export const authenticateJWT = (
                 return res.sendStatus(403);
             }
             req.user = user;
-            next();
+            return next();
         });
     } else {
-        res.sendStatus(401);
+        return res.sendStatus(401);
     }
+};
+
+export const authenticateAdmin = (
+    req: IGetUserAuthInfoRequest,
+    res: Response,
+    next: NextFunction
+) => {
+    if (req.user?.role === UserRoles.ADMIN) {
+        return next();
+    }
+    return res.sendStatus(403);
 };

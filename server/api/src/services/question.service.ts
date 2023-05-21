@@ -1,4 +1,5 @@
-import Question, { IQuestion } from '../models/question.model'
+import { IQuestion } from '../global/types'
+import Question from '../models/question.model'
 
 export async function addQuestion(question: IQuestion) {
     try {

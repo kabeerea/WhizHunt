@@ -1,7 +1,7 @@
 import { getUserById, getUserByUsername, updateUser } from './user.service';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { IUser } from '../models/user.model';
+import { IUser } from '../global/types';
 
 export async function authenticateUser(username: string, password: string) {
     const authUser = await getUserByUsername(username)

@@ -1,6 +1,8 @@
 import express from 'express'
+import { authenticateJWT } from '../middlewares/auth.middleware';
 import { create, get, getAll, update, deleteById } from '../controllers/question.controller'
 const router = express.Router();
+router.use(authenticateJWT)
 
 router.get('/', getAll);
 router.get('/:id', get);

@@ -38,3 +38,8 @@ export interface TokenPayload {
 export interface IGetUserAuthInfoRequest extends Request {
     user: TokenPayload
 }
+
+export type responseError = {
+    error_code: string,
+    message: string
+}

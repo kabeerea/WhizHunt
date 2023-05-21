@@ -1,5 +1,6 @@
 import { Types } from 'mongoose'
-import Test, { ITest } from '../models/test.model'
+import { ITest } from '../global/types'
+import Test from '../models/test.model'
 
 export async function addTest(test: ITest) {
     try {
