@@ -1,5 +1,3 @@
-import { isString } from "./validation"
-
 type responseError = {
     error_code: string,
     message: string
