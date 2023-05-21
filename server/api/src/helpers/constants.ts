@@ -1,15 +1,19 @@
-export const errors = {
-    serverError: {
-        error_code: 'err500',
-        message: 'Server Error'
-    },
-    invalidCredentials: {
-        error_code: 'err400',
-        message: 'Please enter a valid username or password'
-    }
+export const messages = {
+    serverError: 'Server Error',
+    invalidCredentials: 'Please enter a valid username or password',
+    usernameRequired: 'Username is required',
+    passwordRequired: 'Password is required',
+    userIdRequired: 'User id is required',
+    invalidUserId: 'Invalid user id',
+    nameRequired: 'Name is required',
+    emailRequired: 'Email ID is required',
+    invalidEmailId: 'Invalid Email ID',
+    phoneRequired: 'Phone number is required',
+    invalidPhone: 'Invalid phone number',
+    invalidPassword: 'Password should be atleast 8 characters long'
 }
 
-export const errorCodes = {
+export const httpStatusCodes = {
     success: 200,
     badRequest: 400,
     Unauthorized: 401,

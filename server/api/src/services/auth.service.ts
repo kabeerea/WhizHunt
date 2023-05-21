@@ -24,8 +24,7 @@ export async function registerUser(user: IUser) {
     try {
         const { id, name, email, phone, password } = user
         const hash = bcrypt.hashSync(password, process.env.HASH_SALT);
-        const authUser = await getUserById(id)
-        return updateUser(authUser.id, {
+        return updateUser(id, {
             name,
             email,
             phone,

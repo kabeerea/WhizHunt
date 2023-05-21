@@ -1,4 +1,5 @@
 import { Request } from "express";
+import { AlternativeValidationError } from "express-validator";
 import { Types } from "mongoose";
 
 export interface IQuestion {
@@ -39,7 +40,6 @@ export interface IGetUserAuthInfoRequest extends Request {
     user: TokenPayload
 }
 
-export type responseError = {
-    error_code: string,
-    message: string
+export interface ExpressValidatorResult extends AlternativeValidationError{
+    path: string,
 }

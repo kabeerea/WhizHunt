@@ -6,16 +6,15 @@ import {
     getAllQuestions,
     deleteQuestion
 } from "../services/question.service";
-import { formatSuccessResponse, formatErrorResponse } from "../helpers/utility";
-import { errors } from "../helpers/constants";
+import { httpStatusCodes, messages } from "../helpers/constants";
 
 export async function create(req: Request, res: Response) {
     try {
         const bodyParams = req.body
         const question = await addQuestion(bodyParams)
-        return res.status(200).send(formatSuccessResponse({ id: question._id }))
+        return res.status(httpStatusCodes.success).send({ id: question._id })
     } catch (error) {
-        return res.status(500).send(formatErrorResponse(errors.serverError))
+        return res.status(httpStatusCodes.serverError).send(messages.serverError)
     }
 }
 
@@ -24,9 +23,9 @@ export async function update(req: Request, res: Response) {
         const questionId = req.params.id
         const bodyParams = req.body
         const question = await updateQuestion(questionId, bodyParams)
-        return res.status(200).send(formatSuccessResponse({ id: question._id }))
+        return res.status(httpStatusCodes.success).send({ id: question._id })
     } catch (error) {
-        return res.status(500).send(formatErrorResponse(errors.serverError))
+        return res.status(httpStatusCodes.serverError).send(messages.serverError)
     }
 }
 
@@ -34,18 +33,18 @@ export async function get(req: Request, res: Response) {
     try {
         const questionId = req.params.id
         const question = await getQuestionById(questionId)
-        return res.status(200).send(formatSuccessResponse(question))
+        return res.status(httpStatusCodes.success).send(question)
     } catch (error) {
-        return res.status(500).send(formatErrorResponse(errors.serverError))
+        return res.status(httpStatusCodes.serverError).send(messages.serverError)
     }
 }
 
 export async function getAll(req: Request, res: Response) {
     try {
         const questions = await getAllQuestions()
-        return res.status(200).send(formatSuccessResponse(questions))
+        return res.status(200).send(questions)
     } catch (error) {
-        return res.status(500).send(formatErrorResponse(errors.serverError))
+        return res.status(500).send(messages.serverError)
     }
 }
 
@@ -53,8 +52,8 @@ export async function deleteById(req: Request, res: Response) {
     try {
         const questionId = req.params.id
         const question = await deleteQuestion(questionId)
-        return res.status(200).send(formatSuccessResponse({ id: question._id }))
+        return res.status(200).send({ id: question._id })
     } catch (error) {
-        return res.status(500).send(formatErrorResponse(errors.serverError))
+        return res.status(500).send(messages.serverError)
     }
 }

@@ -1,18 +1,17 @@
 import { Request, Response } from "express";
 import { authenticateUser, registerUser, verifyUsername } from "../services/auth.service";
-import { formatSuccessResponse, formatErrorResponse } from "../helpers/utility";
-import { errors } from "../helpers/constants";
+import { httpStatusCodes, messages } from "../helpers/constants";
 
 export async function login(req: Request, res: Response) {
     try {
         const { username, password } = req.body
         const token = await authenticateUser(username, password)
         if (token) {
-            return res.status(200).send(formatSuccessResponse({ token }))
+            return res.status(httpStatusCodes.success).send({ token })
         }
-        return res.status(400).send(formatErrorResponse(errors.invalidCredentials))
+        return res.status(httpStatusCodes.badRequest).send(messages.invalidCredentials)
     } catch (error) {
-        return res.status(200).send(formatErrorResponse(errors.serverError))
+        return res.status(httpStatusCodes.serverError).send(messages.serverError)
     }
 
 }
@@ -20,17 +19,17 @@ export async function login(req: Request, res: Response) {
 export async function register(req: Request, res: Response) {
     try {
         await registerUser(req.body)
-        return res.status(200).send(formatSuccessResponse({}))
+        return res.status(httpStatusCodes.success).send({})
     } catch (error) {
-        return res.status(500).send(formatErrorResponse(errors.serverError))
+        return res.status(httpStatusCodes.serverError).send(messages.serverError)
     }
 }
 
 export async function verify(req: Request, res: Response) {
     try {
         const response = await verifyUsername(req.body.username)
-        return res.status(200).send(formatSuccessResponse(response))
+        return res.status(httpStatusCodes.success).send(response)
     } catch (error) {
-        return res.status(500).send(formatErrorResponse(errors.serverError))
+        return res.status(httpStatusCodes.serverError).send(messages.serverError)
     }
 }
