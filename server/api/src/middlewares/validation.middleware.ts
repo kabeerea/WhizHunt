@@ -17,7 +17,7 @@ export function userRegistrationValidationRules() {
             .isMongoId().withMessage(messages.invalidUserId).bail()
             .custom(async (id) => {
                 const user = await getUserById(id)
-                if(user === null){
+                if (user === null) {
                     throw new Error(messages.invalidUserId)
                 }
             }),

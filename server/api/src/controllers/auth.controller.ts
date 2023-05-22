@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { authenticateUser, registerUser, verifyUsername } from "../services/auth.service";
 import { httpStatusCodes, messages } from "../helpers/constants";
+import logger from "../config/logger.config";
 
 export async function login(req: Request, res: Response) {
     try {
@@ -11,6 +12,7 @@ export async function login(req: Request, res: Response) {
         }
         return res.status(httpStatusCodes.badRequest).send(messages.invalidCredentials)
     } catch (error) {
+        logger.error(error)
         return res.status(httpStatusCodes.serverError).send(messages.serverError)
     }
 
@@ -21,6 +23,7 @@ export async function register(req: Request, res: Response) {
         await registerUser(req.body)
         return res.status(httpStatusCodes.success).send({})
     } catch (error) {
+        logger.error(error)
         return res.status(httpStatusCodes.serverError).send(messages.serverError)
     }
 }
@@ -30,6 +33,7 @@ export async function verify(req: Request, res: Response) {
         const response = await verifyUsername(req.body.username)
         return res.status(httpStatusCodes.success).send(response)
     } catch (error) {
+        logger.error(error)
         return res.status(httpStatusCodes.serverError).send(messages.serverError)
     }
 }
