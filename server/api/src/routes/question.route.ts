@@ -1,5 +1,4 @@
 import express from 'express'
-import { authenticateAdmin, authenticateJWT } from '../middlewares/auth.middleware';
 import { create, get, getAll, update, deleteById } from '../controllers/question.controller'
 
 const router = express.Router();
