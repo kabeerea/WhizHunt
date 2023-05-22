@@ -4,14 +4,14 @@ import { ExpressValidatorResult } from '../global/types'
 import { httpStatusCodes, messages } from '../helpers/constants'
 import { getUserById } from '../services/user.service'
 
-export function userAuthenticationValidationRules () {
+export function userAuthenticationValidationRules() {
     return [
         body('username').exists().withMessage(messages.usernameRequired),
         body('password').exists().withMessage(messages.passwordRequired),
     ]
 }
 
-export function userRegistrationValidationRules () {
+export function userRegistrationValidationRules() {
     return [
         body('id').exists().withMessage(messages.userIdRequired).bail()
             .isMongoId().withMessage(messages.invalidUserId).bail()
@@ -29,7 +29,7 @@ export function userRegistrationValidationRules () {
     ]
 }
 
-export function verifyUsernameValidationRules () {
+export function verifyUsernameValidationRules() {
     return [
         body('username').exists().withMessage(messages.usernameRequired)
     ]
@@ -44,5 +44,5 @@ export const validate = (req: Request, res: Response, next: NextFunction) => {
     result.array().forEach((error: ExpressValidatorResult) => {
         errors[error.path] = error.msg
     })
-    return res.status(httpStatusCodes.badRequest).send(errors)
+    return res.status(httpStatusCodes.badRequest).send({ errors })
 }
