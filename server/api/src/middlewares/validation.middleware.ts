@@ -17,8 +17,10 @@ export function userRegistrationValidationRules() {
             .isMongoId().withMessage(messages.invalidUserId).bail()
             .custom(async (id) => {
                 const user = await getUserById(id)
-                return user !== null
-            }).withMessage(messages.invalidUserId),
+                if(user === null){
+                    throw new Error(messages.invalidUserId)
+                }
+            }),
         body('name').exists().withMessage(messages.nameRequired),
         body('email').exists().withMessage(messages.emailRequired).bail()
             .isEmail().withMessage(messages.invalidEmailId),
